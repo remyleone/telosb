@@ -14,8 +14,11 @@ import io
 import struct
 import sys
 import time
+import getopt
 
 import serial
+import telosb.elf as elf
+
 
 VERSION = "Revision: 1.39-telos-8 ".split()[1]  # freeze the mspgcc CVS version, and tag telos
 
@@ -794,7 +797,6 @@ class Memory:
     def loadELF(self, file):
         """load data from a (opened) file in ELF object format.
         File must be seekable"""
-        import telosb.elf as elf
         obj = elf.ELFObject()
         obj.fromFile(file)
         if obj.e_type != elf.ELFObject.ET_EXEC:
@@ -1371,7 +1373,6 @@ def hexify(line, bytes, width=16):
 # Main:
 def main():
     global DEBUG
-    import getopt
     filetype = None
     filename = None
     comPort = 0  # Default setting.

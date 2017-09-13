@@ -8,8 +8,8 @@ import io
 import os
 import sys
 from shutil import rmtree
-from telosb.bsl import VERSION
-from setuptools import find_packages, setup, Command
+
+from setuptools import setup, Command
 
 # Package meta-data.
 NAME = 'telosb'
@@ -75,13 +75,10 @@ setup(
     author=AUTHOR,
     author_email=EMAIL,
     url=URL,
-    packages=find_packages(),
-    # If your package is a single module, use this instead of 'packages':
-    # py_modules=['mypackage'],
-
-    # entry_points={
-    #     'console_scripts': ['mycli=mymodule:cli'],
-    # },
+    packages=["telosb"],
+    entry_points={
+        'console_scripts': ['telosb = telosb.bsl:main'],
+    },
     install_requires=REQUIRED,
     include_package_data=True,
     license='ISC',
